@@ -40,6 +40,7 @@ jobs:
         uses: autero1/action-terragrunt@v1.1.0
         with:
           terragrunt_version: latest
+          token: ${{ secrets.GH_PAT }}
 
       - name: Plan Terragrunt
         working-directory: infrastrcture/dev/eu-west-2/dev
