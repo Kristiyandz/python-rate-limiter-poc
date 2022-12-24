@@ -1,12 +1,8 @@
 name: Dev Destroy
 
 on:
-  workflow_dispatch:
-    inputs:
-      folder:
-        description: "Folder to destroy"
-        required: true
-        type: string
+  push:
+    branches: main
 
 jobs:
   destroy:
