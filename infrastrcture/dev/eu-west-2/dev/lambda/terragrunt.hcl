@@ -32,5 +32,5 @@ include {
 }
 
 inputs = {
-  function_name = "kris_test_lambda"
+  function_name = "python_test_lambda"
 }
