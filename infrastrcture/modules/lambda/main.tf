@@ -5,7 +5,7 @@ data "archive_file" "my_test_lambda_archive" {
 }
 
 resource "aws_iam_role" "iam_for_lambda" {
-  name = "iam_role_test_lambda"
+  name = "iam_role_test_python_lambda"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
