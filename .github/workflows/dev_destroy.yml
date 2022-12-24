@@ -36,9 +36,4 @@ jobs:
           token: ${{ secrets.GH_PAT }}
 
       - name: Destroy Terragrunt
-        run: |
-          echo "Folder ${{ github.event.inputs.folder }}"
-          terragrunt destroy \
-            --terragrunt-non-interractive \
-            --auto-approve \
-            --terragrunt-working-dir "infrastrcture/dev/eu-west-2/dev/${{ github.event.inputs.folder }}"
+        run: terragrunt run-all destroy --terragrunt-non-interractive
