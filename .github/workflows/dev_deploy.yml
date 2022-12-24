@@ -43,9 +43,9 @@ jobs:
           token: ${{ secrets.GH_PAT }}
 
       - name: Plan Terragrunt
-        working-directory: infrastrcture/dev/eu-west-2/dev
+        working-directory: dev/eu-west-2/dev
         run: terragrunt run-all plan --terragrunt-non-interactive
 
       - name: Apply Terragrunt
-        working-directory: infrastrcture/dev/eu-west-2/dev
+        working-directory: dev/eu-west-2/dev
         run: terragrunt run-all apply --terragrunt-non-interactive

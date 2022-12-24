@@ -36,5 +36,5 @@ jobs:
           token: ${{ secrets.GH_PAT }}
 
       - name: Destroy Terragrunt
-        working-directory: infrastructure/dev/eu-west-2/dev
+        working-directory: dev/eu-west-2/dev
         run: terragrunt run-all destroy --terragrunt-non-interractive
