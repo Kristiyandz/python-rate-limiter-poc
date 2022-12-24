@@ -37,4 +37,4 @@ jobs:
 
       - name: Destroy Terragrunt
         working-directory: dev/eu-west-2/dev
-        run: terragrunt run-all destroy --terragrunt-non-interractive
+        run: terragrunt run-all destroy --terragrunt-non-interractive --auto-approve
