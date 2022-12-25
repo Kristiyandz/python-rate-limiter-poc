@@ -8,7 +8,7 @@ terraform {
 
   backend "s3" {
     bucket = "tf-state-bucket-rate-limiter"
-    key    = "/state/terraform.tfstate"
+    key    = "state/terraform.tfstate"
     region = "eu-west-2"
   }
 }
