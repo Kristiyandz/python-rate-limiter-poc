@@ -25,12 +25,5 @@ jobs:
         with:
           version: 1.1.0
 
-      - name: Setup Terragrunt
-        uses: autero1/action-terragrunt@v1.1.0
-        with:
-          terragrunt_version: latest
-          token: ${{ secrets.GH_PAT }}
-
-      - name: Destroy Terragrunt
-        working-directory: dev/eu-west-2/dev
-        run: terragrunt run-all destroy --terragrunt-non-interractive --auto-approve
+      - name: Terraform apply
+        run: terraform apply -destroy
