@@ -31,7 +31,4 @@ jobs:
           version: 1.1.0
 
       - name: Terraform apply
-        run: |
-          terraform init
-          terraform plan
-          terraform apply -destroy -auto-approve
+        run: terraform apply -destroy -auto-approve
