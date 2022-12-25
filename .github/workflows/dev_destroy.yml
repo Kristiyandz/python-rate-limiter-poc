@@ -1,8 +1,13 @@
 name: Dev Destroy
 
 on:
-  push:
-    branches: main
+  workflow_call:
+    inputs:
+      command:
+        description: "Destroy command"
+        default: "destroy"
+        required: true
+        type: string
 
 jobs:
   destroy:
