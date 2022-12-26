@@ -29,10 +29,10 @@ jobs:
         run: |
           cd terraform
           terraform init
-          terraform plan -var aws_account_id=${{ secrets.AWS_ACCOUNT_ID }} -destroy
+          terraform plan -destroy
 
       - name: Terraform Apply Destroy
         run: |
           cd terraform
           terraform init
-          terraform apply -var aws_account_id=${{ secrets.AWS_ACCOUNT_ID }} -destroy -auto-approve
+          terraform apply -destroy -auto-approve
