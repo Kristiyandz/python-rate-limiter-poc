@@ -48,5 +48,4 @@ jobs:
         run: |
           cd terraform
           terraform init
-          terraform plan
           terraform apply -var aws_account_id={{ secrets.AWS_ACCOUNT_ID }} -auto-approve
