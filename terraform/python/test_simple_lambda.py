@@ -17,14 +17,6 @@ def test_function(event, context):
     result = handler(event, context)
 
     expected = {
-        "statusCode": 200,
-        "headers": {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
-        },
-        'body': json.dumps({
-            'message': "Hello from Lambda!"
-        }),
-        "isBase64Encoded": False
+        'message': "Hello from Lambda!"
     }
-    assert result == expected
+    assert result == json.dumps(expected)
