@@ -67,11 +67,18 @@ resource "aws_api_gateway_usage_plan" "example" {
     stage  = aws_api_gateway_stage.production.stage_name
   }
 
+  throttle {
+    path       = "/path1/GET"
+    rate_limit = 2
+  }
+
   quota_settings {
     limit  = 3
     offset = 0
     period = "DAY"
   }
+
+
 
   throttle_settings {
     burst_limit = 5
