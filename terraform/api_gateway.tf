@@ -60,16 +60,15 @@ resource "aws_api_gateway_usage_plan" "example" {
   api_stages {
     api_id = aws_api_gateway_rest_api.example.id
     stage  = aws_api_gateway_stage.development.stage_name
+    throttle {
+      path       = "/path1/GET"
+      rate_limit = 2
+    }
   }
 
   api_stages {
     api_id = aws_api_gateway_rest_api.example.id
     stage  = aws_api_gateway_stage.production.stage_name
-  }
-
-  throttle {
-    path       = "/path1/GET"
-    rate_limit = 2
   }
 
   quota_settings {
