@@ -25,7 +25,7 @@ resource "aws_api_gateway_integration" "integration" {
   uri                     = aws_lambda_function.my_test_lambda.invoke_arn
 }
 
-resource "aws_api_gateway_usage_plan" "MyUsagePlan" {
+resource "aws_api_gateway_usage_plan" "myusageplan" {
   name        = "my-usage-plan"
   description = "my description"
 
