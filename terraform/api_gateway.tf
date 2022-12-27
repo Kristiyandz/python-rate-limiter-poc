@@ -160,6 +160,14 @@ resource "aws_api_gateway_usage_plan_key" "main" {
   usage_plan_id = aws_api_gateway_usage_plan.example.id
 }
 
+resource "aws_api_gateway_method" "MyDemoMethod" {
+  rest_api_id   = aws_api_gateway_rest_api.example.id
+  resource_id   = aws_api_gateway_resource.resource
+  http_method   = "GET"
+  authorization = "NONE"
+  api_key_required = true
+}
+
 resource "aws_api_gateway_method_settings" "settings" {
   rest_api_id = aws_api_gateway_rest_api.example.id
   stage_name  = aws_api_gateway_stage.development.stage_name
