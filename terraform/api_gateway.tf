@@ -24,7 +24,7 @@ resource "aws_api_gateway_rest_api" "MyDemoAPI" {
 
 }
 
-resource "aws_api_gateway_deployment" "example" {
+resource "aws_api_gateway_deployment" "dev" {
   rest_api_id = aws_api_gateway_rest_api.MyDemoAPI.id
 
   triggers = {
@@ -36,10 +36,10 @@ resource "aws_api_gateway_deployment" "example" {
   }
 }
 
-resource "aws_api_gateway_stage" "example" {
-  deployment_id = aws_api_gateway_deployment.example.id
+resource "aws_api_gateway_stage" "dev" {
+  deployment_id = aws_api_gateway_deployment.dev.id
   rest_api_id   = aws_api_gateway_rest_api.MyDemoAPI.id
-  stage_name    = "example"
+  stage_name    = "dev"
 }
 
 resource "aws_api_gateway_resource" "resource" {
@@ -67,6 +67,11 @@ resource "aws_api_gateway_integration" "integration" {
 resource "aws_api_gateway_usage_plan" "myusageplan" {
   name        = "my-usage-plan"
   description = "my description"
+
+  api_stages {
+    api_id = aws_api_gateway_rest_api.MyDemoAPI.id
+    stage  = aws_api_gateway_stage.dev.stage_name
+  }
 
   quota_settings {
     limit  = 5
