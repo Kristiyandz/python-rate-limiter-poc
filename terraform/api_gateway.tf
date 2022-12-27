@@ -69,6 +69,8 @@ resource "aws_api_gateway_rest_api" "example" {
     }
   })
 
+  api_key_source = "HEADER"
+
   name = "example"
 }
 
