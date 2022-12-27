@@ -24,3 +24,19 @@ resource "aws_api_gateway_integration" "integration" {
   type                    = "AWS_PROXY"
   uri                     = aws_lambda_function.my_test_lambda.invoke_arn
 }
+
+resource "aws_api_gateway_usage_plan" "MyUsagePlan" {
+  name        = "my-usage-plan"
+  description = "my description"
+
+  quota_settings {
+    limit  = 5
+    offset = 2
+    period = "DAY"
+  }
+
+  throttle_settings {
+    burst_limit = 5
+    rate_limit  = 5
+  }
+}
