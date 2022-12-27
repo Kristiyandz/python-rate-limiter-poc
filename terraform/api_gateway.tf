@@ -44,6 +44,9 @@ resource "aws_api_gateway_stage" "development" {
   deployment_id = aws_api_gateway_deployment.example.id
   rest_api_id   = aws_api_gateway_rest_api.example.id
   stage_name    = "development"
+  depends_on = [
+    aws_cloudwatch_log_group.example
+  ]
 }
 
 resource "aws_api_gateway_stage" "production" {
@@ -101,7 +104,6 @@ resource "aws_api_gateway_method_settings" "settings" {
   method_path = "*/*"
   settings {
     logging_level      = "INFO"
-    data_trace_enabled = true
     metrics_enabled    = true
   }
 }
