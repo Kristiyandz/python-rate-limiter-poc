@@ -102,39 +102,39 @@ resource "aws_cloudwatch_log_stream" "foo" {
   log_group_name = aws_cloudwatch_log_group.example.name
 }
 
-resource "aws_api_gateway_stage" "development" {
-  deployment_id = aws_api_gateway_deployment.example.id
-  rest_api_id   = aws_api_gateway_rest_api.example.id
-  stage_name    = "development"
-  depends_on = [
-    aws_cloudwatch_log_group.example
-  ]
-}
+# resource "aws_api_gateway_stage" "development" {
+#   deployment_id = aws_api_gateway_deployment.example.id
+#   rest_api_id   = aws_api_gateway_rest_api.example.id
+#   stage_name    = "development"
+#   depends_on = [
+#     aws_cloudwatch_log_group.example
+#   ]
+# }
 
-resource "aws_api_gateway_stage" "production" {
-  deployment_id = aws_api_gateway_deployment.example.id
-  rest_api_id   = aws_api_gateway_rest_api.example.id
-  stage_name    = "production"
-}
+# resource "aws_api_gateway_stage" "production" {
+#   deployment_id = aws_api_gateway_deployment.example.id
+#   rest_api_id   = aws_api_gateway_rest_api.example.id
+#   stage_name    = "production"
+# }
 
 resource "aws_api_gateway_usage_plan" "example" {
   name         = "my-usage-plan"
   description  = "my description"
   product_code = "MYCODE"
 
-  api_stages {
-    api_id = aws_api_gateway_rest_api.example.id
-    stage  = aws_api_gateway_stage.development.stage_name
-    throttle {
-      path       = "/path1/GET"
-      rate_limit = 2
-    }
-  }
+  # api_stages {
+  #   api_id = aws_api_gateway_rest_api.example.id
+  #   stage  = aws_api_gateway_stage.development.stage_name
+  #   throttle {
+  #     path       = "/path1/GET"
+  #     rate_limit = 2
+  #   }
+  # }
 
-  api_stages {
-    api_id = aws_api_gateway_rest_api.example.id
-    stage  = aws_api_gateway_stage.production.stage_name
-  }
+  # api_stages {
+  #   api_id = aws_api_gateway_rest_api.example.id
+  #   stage  = aws_api_gateway_stage.production.stage_name
+  # }
 
   quota_settings {
     limit  = 3
@@ -170,7 +170,7 @@ resource "aws_api_gateway_method" "MyDemoMethod" {
 
 resource "aws_api_gateway_method_settings" "settings" {
   rest_api_id = aws_api_gateway_rest_api.example.id
-  stage_name  = aws_api_gateway_stage.development.stage_name
+  # stage_name  = aws_api_gateway_stage.development.stage_name
   method_path = "*/*"
   settings {
     logging_level      = "INFO"
