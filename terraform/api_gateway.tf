@@ -40,3 +40,13 @@ resource "aws_api_gateway_usage_plan" "MyUsagePlan" {
     rate_limit  = 5
   }
 }
+
+resource "aws_api_gateway_api_key" "mykey" {
+  name = "python_rate_limit_key"
+}
+
+resource "aws_api_gateway_usage_plan_key" "main" {
+  key_id        = aws_api_gateway_api_key.mykey.id
+  key_type      = "API_KEY"
+  usage_plan_id = aws_api_gateway_usage_plan.myusageplan.id
+}
