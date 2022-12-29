@@ -154,6 +154,10 @@ resource "aws_api_gateway_integration" "MyDemoIntegration" {
   #   "integration.request.header.X-Authorization" = "'static'"
   # }
 
+  depends_on = [
+    aws_api_gateway_method.MyDemoMethod
+  ]
+
 }
 resource "aws_api_gateway_deployment" "example" {
   rest_api_id = aws_api_gateway_rest_api.example.id
