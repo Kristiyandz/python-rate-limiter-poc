@@ -149,7 +149,7 @@ resource "aws_api_gateway_integration" "MyDemoIntegration" {
   http_method             = aws_api_gateway_method.MyDemoMethod.http_method
   type                    = "HTTP"
   timeout_milliseconds    = 29000
-  integration_http_method = "GET"
+  integration_http_method = "POST"
 
   # request_parameters = {
   #   "integration.request.header.X-Authorization" = "'static'"
