@@ -93,7 +93,7 @@ resource "aws_api_gateway_usage_plan" "example" {
     api_id = aws_api_gateway_rest_api.example.id
     stage  = aws_api_gateway_stage.development.stage_name
     throttle {
-      path       = "/path1/GET"
+      path       = "/path1/POST"
       rate_limit = 2
     }
   }
