@@ -50,14 +50,13 @@ EOF
 
 resource "aws_api_gateway_rest_api" "example" {
   api_key_source = "HEADER"
-  name = "example"
+  name           = "example"
 }
 
 resource "aws_api_gateway_resource" "MyDemoResource" {
   rest_api_id = aws_api_gateway_rest_api.example.id
   parent_id   = aws_api_gateway_rest_api.example.root_resource_id
   path_part   = "mydemoresource"
-  key
 }
 
 resource "aws_api_gateway_deployment" "example" {
