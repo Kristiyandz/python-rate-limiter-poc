@@ -59,21 +59,6 @@ resource "aws_api_gateway_resource" "MyDemoResource" {
   path_part   = "mydemoresource"
 }
 
-resource "aws_api_gateway_deployment" "example" {
-  rest_api_id = aws_api_gateway_rest_api.example.id
-
-  triggers = {
-    redeployment = sha1(jsonencode(aws_api_gateway_rest_api.example.body))
-  }
-
-  lifecycle {
-    create_before_destroy = true
-  }
-  depends_on = [
-    aws_api_gateway_method.MyDemoMethod
-  ]
-}
-
 resource "aws_cloudwatch_log_group" "example" {
   name              = "API-Gateway-Execution-Logs_${aws_api_gateway_rest_api.example.id}/development"
   retention_in_days = 7
@@ -168,5 +153,20 @@ resource "aws_api_gateway_integration" "MyDemoIntegration" {
   # request_parameters = {
   #   "integration.request.header.X-Authorization" = "'static'"
   # }
+
+}
+resource "aws_api_gateway_deployment" "example" {
+  rest_api_id = aws_api_gateway_rest_api.example.id
+
+  triggers = {
+    redeployment = sha1(jsonencode(aws_api_gateway_rest_api.example.body))
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+  depends_on = [
+    aws_api_gateway_method.MyDemoMethod
+  ]
 
 }
