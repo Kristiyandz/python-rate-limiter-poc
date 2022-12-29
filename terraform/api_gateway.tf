@@ -147,7 +147,7 @@ resource "aws_api_gateway_integration" "MyDemoIntegration" {
   rest_api_id             = aws_api_gateway_rest_api.example.id
   resource_id             = aws_api_gateway_resource.MyDemoResource.id
   http_method             = aws_api_gateway_method.MyDemoMethod.http_method
-  type                    = "HTTP"
+  type                    = "AWS_PROXY"
   timeout_milliseconds    = 29000
   integration_http_method = "POST"
   uri                     = aws_lambda_function.my_test_lambda.invoke_arn
